@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="P Humera's professional portfolio">
+<title>P Humera | Data Analytics Portfolio</title>
+
+<style>
+:root{
+  --bg:#0b1120;--panel:#111b2e;--panel2:#1b2941;
+  --text:#f4f6ff;--muted:#a8b4c9;--accent:#8490ff;
+  --mint:#48ddc5;--border:rgba(255,255,255,.1);
+}
+body.light{
+  --bg:#f5f7fc;--panel:#fff;--panel2:#edf1fa;
+  --text:#172033;--muted:#59667b;--accent:#555eea;
+  --mint:#087f78;--border:rgba(20,30,55,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.7;transition:.2s}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.container{width:min(1120px,92%);margin:auto}
+section{padding:70px 0}
+h1,h2,h3{line-height:1.25}
+h2{font-size:clamp(28px,4vw,38px);margin-bottom:10px}
+p{color:var(--muted)}
+.accent{color:var(--accent)}
+.eyebrow{color:var(--mint);font-size:12px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.section-heading{margin-bottom:28px}
+.section-heading p{margin-top:7px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:11px 16px;border-radius:10px;font-weight:bold;font-size:13px;border:1px solid var(--border);transition:.2s}
+.btn:hover{transform:translateY(-2px)}
+.primary{background:var(--accent);color:white;border-color:transparent}
+.secondary{background:var(--panel2);color:var(--text)}
+header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--border)}
+.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-size:22px;font-weight:900}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:18px}
+.nav-links a{font-size:13px;font-weight:bold;color:var(--muted)}
+.nav-links a:hover{color:var(--accent)}
+.nav-actions{display:flex;gap:8px}
+.icon-btn{padding:8px 11px;border:1px solid var(--border);border-radius:9px;background:var(--panel2);color:var(--text)}
+.menu-btn{display:none}
+.hero{padding:75px 0}
+.hero-grid{display:grid;grid-template-columns:1.4fr .8fr;align-items:center;gap:40px}
+.availability{display:inline-block;padding:5px 12px;border:1px solid var(--border);border-radius:25px;color:var(--mint);font-size:12px;margin-bottom:22px}
+.hero h1{font-size:clamp(40px,6vw,66px);letter-spacing:-2px;margin-bottom:18px}
+.hero p{font-size:16px;max-width:620px}
+.hero-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.socials{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px}
+.socials a{font-size:13px;color:var(--muted);font-weight:bold}
+.socials a:hover{color:var(--accent)}
+.profile-wrap{display:flex;justify-content:center}
+.profile-ring{width:min(285px,72vw);aspect-ratio:1;padding:8px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--mint))}
+.profile-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 0%;
+  border-radius: 50%;
+  border: 5px solid var(--bg);
+  background: var(--panel);
+  display: block;
+}
+.placeholder{display:none;width:100%;height:100%;border-radius:50%;border:5px solid var(--bg);background:var(--panel2);align-items:center;justify-content:center;font-size:65px;font-weight:900;color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card,.stat{background:var(--panel);border:1px solid var(--border);border-radius:15px;padding:21px}
+.stat strong{display:block;font-size:28px;color:var(--accent)}
+.stat span{font-size:13px;color:var(--muted)}
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+.about-copy p{margin-top:13px}
+.info-list{margin-top:15px}
+.info-item{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
+.info-item span:first-child{color:var(--muted)}
+.info-item span:last-child{text-align:right;overflow-wrap:anywhere;font-weight:bold}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.skill-card h3{font-size:16px;margin-bottom:13px}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tag{padding:5px 9px;background:var(--panel2);border:1px solid var(--border);border-radius:7px;color:var(--muted);font-size:12px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.filter{border:1px solid var(--border);background:var(--panel);color:var(--muted);border-radius:9px;padding:8px 13px;font-size:13px;font-weight:bold}
+.filter.active{background:var(--accent);color:white}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.project{display:flex;flex-direction:column;min-width:0;background:var(--panel);border:1px solid var(--border);border-radius:15px;overflow:hidden;transition:.2s}
+.project:hover{transform:translateY(-4px);border-color:var(--accent)}
+.project-top{padding:18px;background:var(--panel2);display:flex;justify-content:space-between;align-items:center;min-height:88px}
+.project-icon{font-size:31px}
+.project-top span:last-child{font-size:11px;color:var(--muted);font-weight:bold}
+.project-body{padding:18px;display:flex;flex-direction:column;flex:1}
+.project-body h3{font-size:17px;margin-bottom:9px}
+.project-body p{font-size:13px;margin-bottom:14px}
+.project-body .tags{margin-bottom:16px}
+.project-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.project-links .btn{font-size:12px;padding:8px 10px;background-color:#55b5f2;color:#ffffff;border-color:transparent}
+.timeline{display:grid;gap:17px}
+.timeline-item{display:grid;grid-template-columns:130px 1fr;gap:20px}
+.timeline-date{color:var(--accent);font-size:13px;font-weight:bold}
+.timeline-content h3{font-size:16px;margin-bottom:5px}
+.timeline-content p{font-size:13px}
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.cert-icon{font-size:27px}
+.cert-card h3{font-size:15px;margin:8px 0 4px}
+.cert-card p{font-size:13px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.contact-card p{margin:10px 0 17px}
+.contact-links{display:grid;gap:12px}
+.contact-links a{color:var(--accent);overflow-wrap:anywhere}
+footer{border-top:1px solid var(--border);padding:23px 0;color:var(--muted);font-size:13px}
+.footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:900px){
+  .nav-links{gap:10px}.projects-grid{grid-template-columns:repeat(2,1fr)}
+  .skills-grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  section{padding:55px 0}
+  .menu-btn{display:inline-block}
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;padding:15px 5%;background:var(--panel);border-bottom:1px solid var(--border);flex-direction:column;align-items:stretch;gap:0}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:10px 0}
+  .hero{padding:48px 0}
+  .hero-grid{grid-template-columns:1fr;gap:25px}
+  .profile-wrap{order:1}.hero-content{order:2}
+  .profile-ring{width:195px}.hero h1{font-size:43px}
+  .about-grid,.contact-grid,.projects-grid,.skills-grid,.cert-grid{grid-template-columns:1fr}
+  .timeline-item{grid-template-columns:1fr;gap:4px}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home">Humera<span>.</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a><a href="#about">About</a>
+      <a href="#skills">Skills</a><a href="#projects">Projects</a>
+      <a href="#education">Education</a><a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">☀️</button>
+      <button class="icon-btn menu-btn" id="menuToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="availability">● Open to Internship Opportunities</div>
+      <div class="eyebrow">Data Analytics · Technology · Insights</div>
+      <h1>Hi, I'm <span class="accent">P Humera.</span></h1>
+      <p>A Computer Science Engineering student interested in data analytics, business intelligence and building interactive digital applications. I enjoy turning raw data into clear insights that support better decisions.</p>
+      <div class="hero-buttons">
+        <a class="btn primary" href="#projects">Explore My Projects ↗</a>
+        <a class="btn secondary" href="resume.pdf" download="P_Humera_Resume.pdf">⬇ Download Resume</a>
+      </div>
+      <div class="socials">
+        <a href="https://github.com/Humera-786" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a href="https://linkedin.com/in/sony-humera-53b949297" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=humerasony78%40gmail.com" target="_blank" rel="noopener noreferrer">Email ↗</a>
+      </div>
+    </div>
+    <div class="profile-wrap">
+      <div class="profile-ring">
+        <img src="profile.jpg" alt="P Humera"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder">PH</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="container stats">
+    <div class="stat"><strong>8.78</strong><span>B.Tech CGPA</span></div>
+    <div class="stat"><strong>5+</strong><span>Analytics Projects</span></div>
+    <div class="stat"><strong>10+</strong><span>Technical Skills</span></div>
+    <div class="stat"><strong>2027</strong><span>Graduation Year</span></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">About Me</div>
+      <h2>Turning data into <span class="accent">decisions.</span></h2>
+      <p>Curiosity, analytical thinking and continuous learning.</p>
+    </div>
+    <div class="about-grid">
+      <div class="card about-copy">
+        <h3>Who I Am</h3>
+        <p>I'm P Humera, a Computer Science Engineering student building skills in data analytics, business intelligence and web development.</p>
+        <p>My portfolio includes projects exploring retail performance, customer churn, healthcare analytics, financial transactions and interactive dataset exploration.</p>
+        <p>I aim to apply my skills to practical business problems and grow through real-world internship experience.</p>
+      </div>
+      <div class="card">
+        <h3>Quick Information</h3>
+        <div class="info-list">
+          <div class="info-item"><span>Name</span><span>P Humera</span></div>
+          <div class="info-item"><span>Degree</span><span>B.Tech CSE</span></div>
+          <div class="info-item"><span>College</span><span>Siddharth Institute of Engineering and Technology</span></div>
+          <div class="info-item"><span>Graduation</span><span>2027</span></div>
+          <div class="info-item"><span>Focus</span><span>Data Analytics</span></div>
+          <div class="info-item"><span>Location</span><span>Andhra Pradesh, India</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">My Toolkit</div>
+      <h2>Technical <span class="accent">Skills</span></h2>
+      <p>Technologies and tools used in my projects and learning.</p>
+    </div>
+    <div class="skills-grid">
+  <div class="card skill-card">
+    <h3>📊 Data Analytics</h3>
+    <div class="tags">
+      <span class="tag">KPI Analysis</span>
+      <span class="tag">Data Validation</span>
+      <span class="tag">Data Quality Checks</span>
+      <span class="tag">Data Visualization</span>
+      <span class="tag">CSV Data Handling</span>
+      <span class="tag">Exploratory Data Analysis (EDA)</span>
+    </div>
+  </div>
+
+  <div class="card skill-card">
+    <h3>📈 Excel</h3>
+    <div class="tags">
+      <span class="tag">Data Cleaning</span>
+      <span class="tag">Formulas</span>
+      <span class="tag">Sorting & Filtering</span>
+      <span class="tag">Pivot Tables</span>
+      <span class="tag">Charts</span>
+    </div>
+  </div>
+
+  <div class="card skill-card">
+    <h3>🖥️ Dashboard Development</h3>
+    <div class="tags">
+      <span class="tag">Interactive Dashboards</span>
+      <span class="tag">Data Filtering</span>
+      <span class="tag">Data Export</span>
+      <span class="tag">Scenario Analysis</span>
+    </div>
+  </div>
+
+  <div class="card skill-card">
+    <h3>💻 Web Development</h3>
+    <div class="tags">
+      <span class="tag">HTML</span>
+      <span class="tag">CSS</span>
+      <span class="tag">JavaScript</span>
+    </div>
+  </div>
+
+  <div class="card skill-card">
+    <h3>🚀 Framework</h3>
+    <div class="tags">
+      <span class="tag">Streamlit</span>
+    </div>
+  </div>
+
+  <div class="card skill-card">
+    <h3>🛠️ Tools</h3>
+    <div class="tags">
+      <span class="tag">Microsoft Excel</span>
+      <span class="tag">VS Code</span>
+      <span class="tag">GitHub</span>
+      <span class="tag">Netlify</span>
+    </div>
+  </div>
+</div>
+
+
+<section id="projects">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Selected Work</div>
+      <h2>Projects that show my <span class="accent">skills.</span></h2>
+      <p>Practical work focused on analytics, insights and interactive applications.</p>
+    </div>
+    <div class="filters">
+      <button class="filter active" data-filter="all">All Projects</button>
+      <button class="filter" data-filter="analytics">Data Analytics</button>
+      <button class="filter" data-filter="web">Web Development</button>
+      <button class="filter" data-filter="ai">AI & Intelligence</button>
+    </div>
+    <div class="projects-grid">
+
+      <article class="project" data-category="analytics">
+        <div class="project-top"><span class="project-icon">🧩</span><span>PROJECT 01</span></div>
+        <div class="project-body">
+          <h3>NexusIQ</h3>
+          <p>Interactive analytics application for CSV uploads, dataset exploration, KPI calculations, data quality checks and what-if scenario analysis.</p>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">CSV</span></div>
+          <div class="project-links">
+            <a class="btn primary" href="https://github.com/Humera-786/NexusIQ" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a class="btn secondary" href="https://imaginative-beignet-15763d.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Open live demo of NexusIQ">Live Demo ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project" data-category="analytics">
+        <div class="project-top"><span class="project-icon">📊</span><span>PROJECT 02</span></div>
+        <div class="project-body">
+          <h3>Retail Sales & Profit Intelligence</h3>
+          <p>Analyzes sales, profit, discounts, margins, products and regional performance to identify trends and business opportunities.</p>
+          <div class="tags"><span class="tag">Excel</span><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Power BI</span></div>
+          <div class="project-links">
+            <a class="btn primary" href="https://github.com/Humera-786/superstoredashboard" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a class="btn secondary" href="https://euphonious-stardust-b62096.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Open live demo of Retail Sales & Profit Intelligence">Live Demo ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project" data-category="analytics">
+        <div class="project-top"><span class="project-icon">🔄</span><span>PROJECT 03</span></div>
+        <div class="project-body">
+          <h3>Retenza.pro</h3>
+          <p>Customer churn and retention project exploring customer tenure, contracts, charges and churn patterns.</p>
+          <div class="tags"><span class="tag">Analytics</span><span class="tag">KPIs</span><span class="tag">JavaScript</span></div>
+          <div class="project-links">
+            <a class="btn primary" href="https://github.com/Humera-786/customer-intelligence-dashboard" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a class="btn secondary" href="https://singular-bavarois-5f4669.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Open live demo of Retenza.pro">Live Demo ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project" data-category="analytics">
+        <div class="project-top"><span class="project-icon">🏥</span><span>PROJECT 04</span></div>
+        <div class="project-body">
+          <h3>CarePulse Healthcare Analytics</h3>
+          <p>Healthcare analytics project focused on exploring data and presenting meaningful indicators for data-informed decisions.</p>
+          <div class="tags"><span class="tag">Analytics</span><span class="tag">Visualization</span><span class="tag">KPIs</span></div>
+          <div class="project-links">
+<a class="btn primary" href="https://github.com/Humera-786/HealthCareAnalytics" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a class="btn secondary" href="https://lustrous-froyo-a54b98.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Open live demo of CarePulse Healthcare Analytics">Live Demo ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project" data-category="ai">
+        <div class="project-top"><span class="project-icon">🛡️</span><span>PROJECT 05</span></div>
+        <div class="project-body">
+          <h3>FinGuard</h3>
+          <p>Financial fraud and transaction intelligence project exploring transaction patterns and potential risk indicators.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Analytics</span><span class="tag">Machine Learning</span></div>
+          <div class="project-links">
+            <a class="btn primary" href="https://github.com/Humera-786/FinGuard" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a class="btn secondary" href="https://glittering-meringue-45918f.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Open live demo of FinGuard">Live Demo ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project" data-category="web">
+        <div class="project-top"><span class="project-icon">🗺️</span><span>PROJECT 06</span></div>
+        <div class="project-body">
+          <h3>Smart Map Pro</h3>
+          <p>Interactive mapping project designed to make location exploration more accessible.</p>
+          <div class="tags"><span class="tag">Web Development</span><span class="tag">Interactive Maps</span></div>
+          <div class="project-links">
+            <a class="btn primary" href="https://github.com/Humera-786/map-app" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a class="btn secondary" href="https://smart-map-pro.netlify.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
+          </div>
+        </div>
+      </article>
+
+
+     
+
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Academic Background</div>
+      <h2>My <span class="accent">Education</span></h2>
+    </div>
+    <div class="card timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2023 – 2027</div>
+        <div class="timeline-content">
+          <h3>B.Tech — Computer Science and Engineering</h3>
+          <p>Siddharth Institute of Engineering and Technology</p>
+          <p><strong>CGPA: 8.78</strong></p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2021 – 2023</div>
+        <div class="timeline-content">
+          <h3>Intermediate — MPC</h3>
+          <p>Sri Vidyavikas Junior College</p>
+	<p><strong>Marks: 929</strong></p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2020 – 2021</div>
+        <div class="timeline-content">
+          <h3>SSC</h3>
+          <p>Rankers English High School</p>
+          <p><strong>Marks: 597</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certificates">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Learning & Development</div>
+      <h2>Certificates & <span class="accent">Workshops</span></h2>
+    </div>
+    <div class="cert-grid">
+      <div class="card cert-card"><div class="cert-icon">🌐</div><h3>Introduction to Internet of Things</h3><p>NPTEL</p></div>
+      <div class="card cert-card"><div class="cert-icon">📡</div><h3>Introduction to IoT 4.0</h3><p>NPTEL</p></div>
+      <div class="card cert-card"><div class="cert-icon">⚛️</div><h3>Quantum Technology Workshop</h3><p>WISER</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Let's Connect</div>
+      <h2>Have an opportunity? <span class="accent">Let's talk.</span></h2>
+      <p>I'm interested in suitable data analytics and technology internships.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="card contact-card">
+        <h3>Get in Touch</h3>
+        <p>Feel free to reach out about internships, projects or professional opportunities.</p>
+<a class="btn primary" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=humerasony78%40gmail.com" target="_blank" rel="noopener noreferrer">Send Me an Email ↗</a>
+      </div>
+      <div class="card">
+        <h3>Contact Details</h3>
+        <div class="contact-links" style="margin-top:15px">
+<a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=humerasony78%40gmail.com" target="_blank" rel="noopener noreferrer">✉ humerasony78@gmail.com</a>
+          <a href="tel:+918328468155">☎ +91 8328468155</a>
+          <a href="https://github.com/Humera-786" target="_blank" rel="noopener noreferrer">⌘ GitHub Profile ↗</a>
+          <a href="https://linkedin.com/in/sony-humera-53b949297" target="_blank" rel="noopener noreferrer">in LinkedIn Profile ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> P Humera. All rights reserved.</span>
+    <a href="#home">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+"use strict";
+
+// Mobile navigation
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", function () {
+  navLinks.classList.toggle("open");
+  menuToggle.textContent = navLinks.classList.contains("open") ? "✕" : "☰";
+});
+
+navLinks.querySelectorAll("a").forEach(function (link) {
+  link.addEventListener("click", function () {
+    navLinks.classList.remove("open");
+    menuToggle.textContent = "☰";
+  });
+});
+
+// Dark/light theme
+const themeToggle = document.getElementById("themeToggle");
+
+themeToggle.addEventListener("click", function () {
+  document.body.classList.toggle("light");
+  const isLight = document.body.classList.contains("light");
+  themeToggle.textContent = isLight ? "🌙" : "☀️";
+  themeToggle.setAttribute("aria-label", isLight ? "Switch to dark theme" : "Switch to light theme");
+});
+
+// Project filters
+const filterButtons = document.querySelectorAll(".filter");
+const projects = document.querySelectorAll(".project");
+
+filterButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    filterButtons.forEach(function (item) {
+      item.classList.remove("active");
+    });
+    button.classList.add("active");
+
+    const selected = button.dataset.filter;
+
+    projects.forEach(function (project) {
+      const matches = selected === "all" || project.dataset.category === selected;
+      project.style.display = matches ? "flex" : "none";
+    });
+  });
+});
+
+// Automatically update footer year
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Notify if the resume file is missing when the button is clicked
+document.querySelectorAll('a[download="P_Humera_Resume.pdf"]').forEach(function (link) {
+  link.addEventListener("click", function (event) {
+    // The browser will download resume.pdf if the file exists beside index.html.
+    // If it does not exist, add the PDF file to the same folder.
+  });
+});
+</script>
+</body>
+</html>
